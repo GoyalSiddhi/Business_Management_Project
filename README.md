@@ -46,37 +46,106 @@ A comprehensive business management web application built with Spring Boot and T
 ## 🏗️ Architecture Diagram
 
 ```mermaid
-graph TD
-    User[Web Browser] --> Controller[Spring MVC Controllers]
-    
-    Controller --> HomeController[Home Controller]
-    Controller --> UserController[User Controller]
-    Controller --> AdminController[Admin Controller]
-    Controller --> ProductController[Product Controller]
-    Controller --> OrderController[Order Controller]
-    
-    HomeController --> ThymeleafEngine[Thymeleaf Template Engine]
-    UserController --> UserService[User Service]
-    AdminController --> AdminService[Admin Service]
-    ProductController --> ProductService[Product Service]
-    OrderController --> OrderService[Order Service]
-    
-    UserService --> UserRepository[User Repository]
-    AdminService --> AdminRepository[Admin Repository]
-    ProductService --> ProductRepository[Product Repository]
-    OrderService --> OrderRepository[Order Repository]
-    
-    UserRepository --> MySQL[(MySQL Database)]
-    AdminRepository --> MySQL
-    ProductRepository --> MySQL
-    OrderRepository --> MySQL
-    
-    ThymeleafEngine --> Templates[HTML Templates]
-    Templates --> StaticResources[Static Resources]
-    
-    UserEntity[User Entity] -.-> UserRepository
-    AdminEntity[Admin Entity] -.-> AdminRepository
-    ProductEntity[Product Entity] -.-> ProductRepository
-    OrderEntity[Order Entity] -.-> OrderRepository
-    
-    ExceptionHandler[Global Exception Handler] --> ErrorPages[Error Templates]
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'primaryColor': '#2563eb',
+    'primaryTextColor': '#ffffff',
+    'primaryBorderColor': '#1d4ed8',
+    'lineColor': '#374151',
+    'secondaryColor': '#10b981',
+    'tertiaryColor': '#f59e0b',
+    'background': '#f8fafc',
+    'mainBkg': '#ffffff',
+    'secondBkg': '#e5e7eb',
+    'tertiaryBkg': '#fef3c7'
+  }
+}}%%
+
+flowchart TD
+    %% User Layer
+    subgraph "👥 User Interface Layer"
+        UI[🖥️ Web Interface<br/>Thymeleaf Templates]:::frontend
+        API[🔌 REST API<br/>Controllers]:::api
+    end
+
+    %% Service Layer
+    subgraph "🏗️ Business Logic Layer"
+        PS[📦 Purchase Service<br/>Business Logic]:::service
+        SS[📦 Supplier Service<br/>Vendor Management]:::service
+        IS[📦 Inventory Service<br/>Stock Management]:::service
+        US[📦 User Service<br/>Authentication]:::service
+    end
+
+    %% Data Access Layer
+    subgraph "💾 Data Access Layer"
+        PR[🗂️ Purchase Repository<br/>JPA/Hibernate]:::repository
+        SR[🗂️ Supplier Repository<br/>JPA/Hibernate]:::repository
+        IR[🗂️ Inventory Repository<br/>JPA/Hibernate]:::repository
+        UR[🗂️ User Repository<br/>JPA/Hibernate]:::repository
+    end
+
+    %% Database Layer
+    subgraph "🗃️ Data Persistence Layer"
+        DB[(🗄️ MySQL Database<br/>Primary Storage)]:::database
+    end
+
+    %% External Systems
+    subgraph "🌐 External Integrations"
+        EMAIL[📧 Email Service<br/>Notifications]:::external
+        PAYMENT[💳 Payment Gateway<br/>Transactions]:::external
+        SUPPLIER_API[🏪 Supplier APIs<br/>External Vendors]:::external
+    end
+
+    %% Message Queue (if implemented)
+    subgraph "📨 Messaging Infrastructure"
+        QUEUE[📬 Message Queue<br/>Async Processing]:::queue
+    end
+
+    %% User Interactions
+    UI --> API
+    API --> PS
+    API --> SS
+    API --> IS
+    API --> US
+
+    %% Service Interactions
+    PS --> PR
+    PS --> SR
+    PS --> IR
+    SS --> SR
+    IS --> IR
+    US --> UR
+
+    %% Database Connections
+    PR --> DB
+    SR --> DB
+    IR --> DB
+    UR --> DB
+
+    %% External Service Calls
+    PS --> EMAIL
+    PS --> PAYMENT
+    SS --> SUPPLIER_API
+    PS --> QUEUE
+    QUEUE --> EMAIL
+
+    %% Cross-Service Dependencies
+    PS -.-> SS
+    PS -.-> IS
+    PS -.-> US
+
+    %% Styling Classes
+    classDef frontend fill:#3b82f6,stroke:#1d4ed8,stroke-width:2px,color:#ffffff
+    classDef api fill:#10b981,stroke:#059669,stroke-width:2px,color:#ffffff
+    classDef service fill:#f59e0b,stroke:#d97706,stroke-width:2px,color:#ffffff
+    classDef repository fill:#8b5cf6,stroke:#7c3aed,stroke-width:2px,color:#ffffff
+    classDef database fill:#ef4444,stroke:#dc2626,stroke-width:2px,color:#ffffff
+    classDef external fill:#6b7280,stroke:#4b5563,stroke-width:2px,color:#ffffff
+    classDef queue fill:#ec4899,stroke:#db2777,stroke-width:2px,color:#ffffff
+
+    %% Data Flow Annotations
+    PS -.->|"Purchase Orders"| QUEUE
+    QUEUE -.->|"Order Confirmations"| EMAIL
+    PS -.->|"Inventory Updates"| IS
+    SS -.->|"Supplier Data"| PS
