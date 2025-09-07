@@ -76,6 +76,8 @@ flowchart LR
     classDef core fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#bf360c
     classDef downstream fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#1b5e20
 
+```
+
 ### 2. Context Diagram
 
 ```mermaid
@@ -178,6 +180,7 @@ flowchart TD
     classDef entity fill:#e0f2fe,stroke:#0277bd,stroke-width:2px,color:#01579b
     classDef process fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#e65100
     classDef datastore fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#4a148c
+```
 
 ### 4. Deployment Diagram
 
@@ -260,4 +263,5 @@ flowchart TB
     classDef database fill:#ffebee,stroke:#d32f2f,stroke-width:2px,color:#b71c1c
     classDef external fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#4a148c
     classDef monitoring fill:#f5f5f5,stroke:#616161,stroke-width:2px,color:#424242
+```
 
