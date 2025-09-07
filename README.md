@@ -128,6 +128,8 @@ flowchart TD
     classDef system fill:#fff3e0,stroke:#f57c00,stroke-width:3px,color:#e65100
     classDef external fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#4a148c
 
+```
+
 ### 3. Data Flow Diagram
 
 ```mermaid
