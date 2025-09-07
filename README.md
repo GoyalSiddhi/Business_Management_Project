@@ -31,11 +31,7 @@ This Business Management System is designed to streamline core business operatio
     'primaryBorderColor': '#3730a3',
     'lineColor': '#6b7280',
     'secondaryColor': '#059669',
-    'tertiaryColor': '#dc2626',
-    'background': '#ffffff',
-    'mainBkg': '#f8fafc',
-    'secondBkg': '#e2e8f0',
-    'tertiaryBkg': '#fef2f2'
+    'tertiaryColor': '#dc2626'
   }
 }}%%
 
