@@ -26,12 +26,12 @@ This Business Management System is designed to streamline core business operatio
 %%{init: {
   'theme': 'base',
   'themeVariables': {
-    'primaryColor': '#4f46e5',
-    'primaryTextColor': '#ffffff',
-    'primaryBorderColor': '#3730a3',
-    'lineColor': '#6b7280',
-    'secondaryColor': '#059669',
-    'tertiaryColor': '#dc2626'
+    'primaryColor': '#f8fafc',
+    'primaryTextColor': '#1e293b',
+    'primaryBorderColor': '#64748b',
+    'lineColor': '#94a3b8',
+    'secondaryColor': '#f1f5f9',
+    'tertiaryColor': '#e2e8f0'
   }
 }}%%
 
@@ -107,11 +107,11 @@ flowchart TD
     PS -.->|"User Validation"| US
     SS -.->|"Inventory Update"| IS
 
-    %% Styling Classes
-    classDef frontend fill:#4f46e5,stroke:#3730a3,stroke-width:2px,color:#ffffff
-    classDef api fill:#059669,stroke:#047857,stroke-width:2px,color:#ffffff
-    classDef service fill:#0891b2,stroke:#0e7490,stroke-width:2px,color:#ffffff
-    classDef repository fill:#7c3aed,stroke:#6d28d9,stroke-width:2px,color:#ffffff
-    classDef database fill:#dc2626,stroke:#b91c1c,stroke-width:2px,color:#ffffff
-    classDef external fill:#6b7280,stroke:#4b5563,stroke-width:2px,color:#ffffff
-    classDef messaging fill:#ea580c,stroke:#c2410c,stroke-width:2px,color:#ffffff
+    %% Styling Classes - Subtle Professional Colors
+    classDef frontend fill:#e0f2fe,stroke:#0277bd,stroke-width:2px,color:#01579b
+    classDef api fill:#e8f5e8,stroke:#388e3c,stroke-width:2px,color:#1b5e20
+    classDef service fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#e65100
+    classDef repository fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#4a148c
+    classDef database fill:#ffebee,stroke:#d32f2f,stroke-width:2px,color:#b71c1c
+    classDef external fill:#f5f5f5,stroke:#616161,stroke-width:2px,color:#424242
+    classDef messaging fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#01579b
